@@ -1,0 +1,41 @@
+# Archivos de Bytecode y compilados de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Carpetas de entornos virtuales
+venv/
+env/
+.venv/
+
+# Archivos de configuración de editores e IDEs
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Archivos de dependencias y builds
+*.egg-info/
+dist/
+build/
+
+# Archivos de logs
+*.log
+logs/
+
+# Archivos de variables de entorno (¡MUY IMPORTANTE!)
+# Estos archivos suelen contener secretos y claves de API.
+.env
+
+# Archivos de bases de datos locales
+*.sqlite3
+db.sqlite3
+
+# Directorio de documentos subidos por usuarios
+# No se deben versionar los datos de los usuarios.
+uploaded_documents/
+
+# Reportes de testing
+.coverage
+htmlcov/    

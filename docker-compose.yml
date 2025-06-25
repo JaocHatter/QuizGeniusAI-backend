@@ -1,0 +1,39 @@
+services:
+  db:
+    image: postgres:13-alpine
+    container_name: quizgenius_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=quizuser
+      - POSTGRES_PASSWORD=quizpassword
+      - POSTGRES_DB=quizgenius_db
+    ports:
+      - "5432:5432" 
+    restart: unless-stopped
+
+  app:
+    build: . 
+    container_name: quizgenius_app
+    ports:
+      - "8000:8000" 
+    volumes:
+      - .:/app 
+    environment:
+      - DATABASE_URL=postgresql://quizuser:quizpassword@db:5432/quizgenius_db
+      - GEMINI_API_KEY=${GEMINI_API_KEY} 
+      - SECRET_KEY=${SECRET_KEY}
+    depends_on:
+      - db 
+    command: >
+      sh -c "
+        echo 'Waiting for PostgreSQL to be ready...' &&
+        while ! nc -z db 5432; do
+          sleep 0.1;
+        done;
+        echo 'PostgreSQL started!' &&
+        uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+      "
+
+volumes:
+  postgres_data:
