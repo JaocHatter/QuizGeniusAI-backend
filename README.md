@@ -2,9 +2,6 @@
 
 ## Testing Endpoints
 
-Aquí tienes las consultas `curl` para cada uno de los endpoints definidos en tu backend, asumiendo que tu servidor se ejecuta en `http://localhost:8000` y el prefijo de la API es `/api/v1`.
-
----
 ## **Endpoints de Usuarios (`users.py`)**
 
 Estos endpoints se encuentran bajo el prefijo `/api/v1/users`.
@@ -267,11 +264,3 @@ SELECT * FROM users;
     
     O simplemente presiona `Ctrl+D`.
     
-
-**En resumen:**
-
-1. Asegúrate de que tus contenedores estén corriendo (`docker-compose up -d`).
-2. Abre tu terminal.
-3. Ejecuta: `docker exec -it quizgenius_db psql -U quizuser -d quizgenius_db`
-4. Ingresa la contraseña (`quizpassword`).
-5. Usa `\dt` para ver tus tablas.
